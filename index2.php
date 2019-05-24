@@ -28,26 +28,32 @@ $usuario = ["logado" => true, "nome"=> "Vinicius Gasiunas","nivelAcesso" => 1];
         <div class="collapse navbar-collapse" id="navbarNav"> 
           <ul class="navbar-nav"> 
                
-               <?php if(isset($usuario) && $usuario != "" && $usuario['logado']):?> <!--validar a ação -->
-
-               <?php if($usuario['nivelAcesso'] == 0): ?>
-                      <li class="nav-item active"> 
-                        <a class="nav-link" href="#">Ações <span class="sr-only">(current)</span></a> <!--li que segura ações -->
-                      </li>
+               <?php if($usuario['nivelAcesso'] == 0):?> <!-- onde tem ":" estava a "}" -->
+               <li class="nav-item active"> 
+                <a class="nav-link" href="#">Ações <span class="sr-only">(current)</span></a> <!--li que segura ações -->
+               </li>
+               
               <?php else :?> <!-- linha 1 --> <!-- onde tem ":" estava a "}" -->
-                      <li class="nav-item active"> 
-                      <a class="nav-link" href="#">Perfil<span class="sr-only">(current)</span></a> <!--li que segura ações -->
-                      </li>
+                <li class="nav-item active"> 
+                <a class="nav-link" href="#">Perfil<span class="sr-only">(current)</span></a> <!--li que segura ações -->
+                </li>
               <?php endif ?> <!--quebra de linha 1 -->
-                      <li class="nav-item">
-                        <a class="nav-link" href="#"> Olá <?php echo $usuario['nome']; ?></a>
-                      </li>
-              <?php else: ?>
+
+
+
+
+
+              <?php 
+                 if($logado) {
+              ?>
+               <li class="nav-item">
+                <a class="nav-link" href="#"> Olá <?php echo $usuario['nome']; ?></a>
+               </li>
+              <?php  }else { ?>
                 <li class="nav-item">
                 <a class="nav-link" href="#"> Login </a>
                 </li>
-                <?php endif; ?>
-               
+              <?php } ?>
           </ul>
         </div>
       </nav>
@@ -97,8 +103,3 @@ $usuario = ["logado" => true, "nome"=> "Vinicius Gasiunas","nivelAcesso" => 1];
 
 </body>
 </html>
-
-
-
-
-
