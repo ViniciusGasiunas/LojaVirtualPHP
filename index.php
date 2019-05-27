@@ -1,11 +1,16 @@
 <?php
 $usuario = ["logado" => true, "nome"=> "Vinicius Gasiunas","nivelAcesso" => 1]; 
 //$usuario = "";
+
+$produtos = [
+      "produto1" => ["nome"=>"Curso FullStack", "descricao"=>"O curso fullstack ensina promação", "preco"=> 1700, "img"=>"img/produto2.jpg"], 
+      "produto2" => ["nome"=> "Curso Mobile IOS", "descricao"=>"O curso te ensina a criar APP's", "preco"=>1500, "img"=>"img/produto1.jpg"],
+      "produto3" => ["nome"=>"Curso Mobile Android", "descricao"=>"O curso te ensina a criar APPs p/ Android", "preco"=> 1500, "img"=>"img/produto3.jpg"], 
+      "produto4" => ["nome"=> "Data Science", "descricao"=>"O curso vai fritar seu cérebro", "preco"=>5000, "img"=>"img/produto4.jpeg"],
+];
+
+$categorias = ["Cursos", "Tutoriais", "Artigos", "Forum", "Codigos"];
 ?>
-
-
-
-
 
 
 <!DOCTYPE html>
@@ -51,43 +56,83 @@ $usuario = ["logado" => true, "nome"=> "Vinicius Gasiunas","nivelAcesso" => 1];
           </ul>
         </div>
       </nav>
+      <nav>
+          <ul class=row mt-3">
+            <?php foreach($categorias as $categoria):?>
+              <li class="col-md-2"><?=$categoria?></li>
+          <?php endforeach; ?>
+          </ul>
+          
+      </nav>
     </header>
     <main class="container mt-5">
      <section class="row">
      <!--coluna para segurar card -->
-      <div class="col-md-4">
+     <?php foreach($produtos as $chave=>$produto): ?>
+
+      <div class="col-md-4" mt-3">
         <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
+          <img src="<?php echo $produto["img"] ?>" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <h5 class="card-title"><?php echo $produto["nome"]; ?></h5>
+              <p class="card-text"><?php echo $produto["descricao"]; ?></p>
+              <h4 class="text-sucess">R$<?php echo $produto["preco"];
+              ["preco"]; ?></h4>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<?php echo $chave; ?>">
+                Comprar
+              </button>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
         </div>
       </div>
+     <?php endforeach; ?>
+              
 
     </section>
     </main>
+    <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<?php foreach($produtos as $chave=>$produto): ?>
+<div class="modal fade" id="<?php echo $chave; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Produto: <?php echo $produto["nome"]; ?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+        <div class="form-group">
+          <input type="text" name="nomeClient" placeholder="Nome completo">
+        </div>
+        <div class="form-group">
+          <input type="number" name="cpfCliente" placeholder="CPF">
+        </div>
+        <div class="form-group">
+          <input type="number" name="cartaoCliente" placeholder="Cartão de crédito">
+        </div>
+        <div class="form-group">
+          <input type="date" name="dataValidadeCartao" placeholder="Validade do cartão">
+        </div>
+        <div class="form-group">
+          <input type="number" maxlenght="3" name="cvvCartao" placeholder="CCV do cartão">
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <div class="text-primary" data-dismiss="modal"> Preço total : R$ <?php echo $produto["preco"]; ?> </div>
+        <button type="button" class="btn btn-success">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
+</div>
+<?php endforeach; ?>
     
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
