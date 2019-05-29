@@ -1,70 +1,13 @@
-<?php
-$usuario = ["logado" => true, "nome"=> "Vinicius Gasiunas","nivelAcesso" => 1]; 
-//$usuario = "";
 
-$produtos = [
-      "produto1" => ["nome"=>"Curso FullStack", "descricao"=>"O curso fullstack ensina promação", "preco"=> 1700, "img"=>"img/produto2.jpg"], 
-      "produto2" => ["nome"=> "Curso Mobile IOS", "descricao"=>"O curso te ensina a criar APP's", "preco"=>1500, "img"=>"img/produto1.jpg"],
-      "produto3" => ["nome"=>"Curso Mobile Android", "descricao"=>"O curso te ensina a criar APPs p/ Android", "preco"=> 1500, "img"=>"img/produto3.jpg"], 
-      "produto4" => ["nome"=> "Data Science", "descricao"=>"O curso vai fritar seu cérebro", "preco"=>5000, "img"=>"img/produto4.jpeg"],
-];
-
-$categorias = ["Cursos", "Tutoriais", "Artigos", "Forum", "Codigos"];
-?>
 
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Loja Virtual</title>
-     <!-- Bootstrap !-->
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Cursos</a> <!--classe que define o logo -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav"> 
-          <ul class="navbar-nav"> 
-               
-               <?php if(isset($usuario) && $usuario != "" && $usuario['logado']):?> <!--validar a ação -->
 
-               <?php if($usuario['nivelAcesso'] == 0): ?>
-                      <li class="nav-item active"> 
-                        <a class="nav-link" href="#">Ações <span class="sr-only">(current)</span></a> <!--li que segura ações -->
-                      </li>
-              <?php else :?> <!-- linha 1 --> <!-- onde tem ":" estava a "}" -->
-                      <li class="nav-item active"> 
-                      <a class="nav-link" href="#">Perfil<span class="sr-only">(current)</span></a> <!--li que segura ações -->
-                      </li>
-              <?php endif ?> <!--quebra de linha 1 -->
-                      <li class="nav-item">
-                        <a class="nav-link" href="#"> Olá <?php echo $usuario['nome']; ?></a>
-                      </li>
-              <?php else: ?>
-                <li class="nav-item">
-                <a class="nav-link" href="#"> Login </a>
-                </li>
-                <?php endif; ?>
-               
-          </ul>
-        </div>
-      </nav>
-      <nav>
-          <ul class=row mt-3">
-            <?php foreach($categorias as $categoria):?>
-              <li class="col-md-2"><?=$categoria?></li>
-          <?php endforeach; ?>
-          </ul>
-          
-      </nav>
-    </header>
+<?php include "head.php"; ?>
+
+<body>
+    <?php include "header.php"; ?>
     <main class="container mt-5">
      <section class="row">
      <!--coluna para segurar card -->
