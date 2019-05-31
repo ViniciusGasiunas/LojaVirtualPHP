@@ -5,9 +5,6 @@ $usuario = ["logado" => true, "nome"=> "Vinicius Gasiunas","nivelAcesso" => 1];
 
 
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

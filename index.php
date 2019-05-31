@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +10,7 @@
      <!--coluna para segurar card -->
      <?php foreach($produtos as $chave=>$produto): ?>
 
-      <div class="col-md-4" mt-3">
+      <div class="col-md-4 mt-3">
         <div class="card" style="width: 18rem;">
           <img src="<?php echo $produto["img"] ?>" class="card-img-top" alt="...">
             <div class="card-body">
@@ -21,7 +18,6 @@
               <p class="card-text"><?php echo $produto["descricao"]; ?></p>
               <h4 class="text-sucess">R$<?php echo $produto["preco"];
               ["preco"]; ?></h4>
-              <!-- Button trigger modal -->
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#<?php echo $chave; ?>">
                 Comprar
               </button>
@@ -33,12 +29,10 @@
 
     </section>
     </main>
-    <!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button> -->
+  
 
-<!-- Modal -->
+
+
 <?php foreach($produtos as $chave=>$produto): ?>
 <div class="modal fade" id="<?php echo $chave; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -50,9 +44,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form method="POST" action="sucesso.php">
         <div class="form-group">
-          <input type="text" name="nomeClient" placeholder="Nome completo">
+          <input type="text" name="nomeProduto" value="<?php echo $produto["nome"]; ?>" hidden>
+          <input type="text" name="nomeCliente" placeholder="Nome completo">
         </div>
         <div class="form-group">
           <input type="number" name="cpfCliente" placeholder="CPF">
@@ -66,11 +61,11 @@
         <div class="form-group">
           <input type="number" maxlenght="3" name="cvvCartao" placeholder="CCV do cartão">
         </div>
-        </form>
       </div>
       <div class="modal-footer">
         <div class="text-primary" data-dismiss="modal"> Preço total : R$ <?php echo $produto["preco"]; ?> </div>
-        <button type="button" class="btn btn-success">Finalizar Compra</button>
+        <button type="submit" class="btn btn-success">Finalizar Compra</button>
+        </form>
       </div>
     </div>
   </div>
