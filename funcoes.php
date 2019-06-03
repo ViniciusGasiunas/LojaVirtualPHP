@@ -10,3 +10,23 @@ function addProduto($nome, $descricao, $preco, $img, $produtos){
     $produtos["produto$chave"] = $novoProduto;
     return $produtos;
 }
+
+function validarNome($nome){
+    return $nome != "" &&  strlen($nome) >= 3;
+}
+
+function validarCPF($cpf){
+    return strlen($cpf) == 11;
+}
+
+function validarCartao($numeroCartao){
+  return strlen($numeroCartao) == 16;
+}
+
+function validarDataValidade($dataValidade){
+  return $dataValidade > date('y-m-d');
+}
+
+function validarCVV($cvv){
+  return strlen($cvv) == 3;
+}
