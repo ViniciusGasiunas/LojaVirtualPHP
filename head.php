@@ -8,15 +8,14 @@ $usuario = logarUsuario("Vinicius Gasiunas", 1);
 $usuario = ["logado" => true, "nome"=> "Vinicius Gasiunas","nivelAcesso" => 0]; 
 //$usuario = "";
 
-$produtos = [
-      "produto1" => ["nome"=>"Curso FullStack", "descricao"=>"vai codar até sangrar os dedos", "preco"=> 1700, "img"=>"img/produto2.jpg"], 
-      "produto2" => ["nome"=> "Curso Mobile IOS", "descricao"=>"O curso te ensina a criar APP's (Linux > All)", "preco"=>1500, "img"=>"img/produto1.jpg"],
-      "produto3" => ["nome"=>"Curso Mobile Android", "descricao"=>"o curso vai te ensinar app para Android (eca !!!)", "preco"=> 1500, "img"=>"img/produto3.jpg"], 
-      "produto4" => ["nome"=> "Data Science", "descricao"=>"O curso vai fritar seu cérebro", "preco"=>5000, "img"=>"img/produto4.jpeg"],
-];
+$jsonProdutos = file_get_contents('Produtos.json');
 
-$produtos = addProduto("Curso de UX","Curso sensashow", 5000, "img/ux.png", $produtos);
-$produtos = addProduto("Curso de Data Analytics","Curso mais ou menos sensashow", 7000, "img/cover.png", $produtos);
+$produtos = json_decode($jsonProdutos, true); //transforma em um array associativo
+
+$produtos = $produtos['Produtos'];
+
+addProduto("Curso Mobile IOS","curso para criar app", 7000, "img/produto1.jpg");
+
 $categorias = ["Cursos", "Tutoriais", "Artigos", "Forum", "Códigos"];
 ?>
 
@@ -28,3 +27,4 @@ $categorias = ["Cursos", "Tutoriais", "Artigos", "Forum", "Códigos"];
      <!-- Bootstrap !-->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
