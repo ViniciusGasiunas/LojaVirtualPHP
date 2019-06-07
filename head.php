@@ -14,8 +14,6 @@ $produtos = json_decode($jsonProdutos, true); //transforma em um array associati
 
 $produtos = $produtos['Produtos'];
 
-addProduto("Curso Mobile IOS","curso para criar app", 7000, "img/produto1.jpg");
-
 $categorias = ["Cursos", "Tutoriais", "Artigos", "Forum", "Códigos"];
 ?>
 
