@@ -33,7 +33,7 @@ echo '<a class="btn btn-primary" href="cadastroProduto.php">Voltar para a págin
 exit;
 }
 
-if(array_search($typeFile, $imgAceitas) == false){
+if(!is_numeric(array_search($typeFile, $imgAceitas))){
     echo "<h1> Extensão do arquivo inválida ! <br> Verifique se o arquivo é uma imagem do tipo: .PNG, .JPG OU .JPEG ! </br> </h1>";
     echo '<a class="btn btn-primary" href="cadastroProduto.php">Voltar para a página de Cadastro !</a>';
     exit;

@@ -1,4 +1,4 @@
-<?php 
+<!-- <?php 
 echo "Olá" .$_POST['nome']." ".$_POST['sobreNome'];
 
 ?>
@@ -18,4 +18,10 @@ echo "Olá" .$_POST['nome']." ".$_POST['sobreNome'];
         <button type="submit">Enviar</button>
     </form>
 </body>
-</html>
+</html> -->
+
+
+<?php
+
+$senha = "Vinicius123";
+$senhaC = password_hash()
