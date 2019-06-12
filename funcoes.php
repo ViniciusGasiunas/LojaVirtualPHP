@@ -1,7 +1,8 @@
 <?php
+session_start(); 
 function logarUsuario($nome, $nivelDeAcesso){
   $usuario = ["logado"=>true, "nome"=>$nome, "nivelAcesso"=>$nivelDeAcesso];
-  return $usuario; 
+  $_SESSION['usuario'] = $usuario;
 }
 
 function addProduto($nome, $descricao, $preco, $img){
@@ -22,16 +23,13 @@ function addProduto($nome, $descricao, $preco, $img){
   return true;
 }
 
-
-
-
 function addUsuario($nomeUsuario, $emailUsuario, $senhaUsuario, $nivelDeAcesso){
     $jsonUsuarios = file_get_contents('Usuarios.json');
     $Usuarios = json_decode($jsonUsuarios, true);
     
     $itensUsuarios = is_array($Usuarios['usuarios'])?count($Usuarios['usuarios']):0;
     $chave = $itensUsuarios + 1;
-    $novoUsuario = ["id"=>"usuario$chave","nome"=>$nomeUsuario, "descricao"=>$emailUsuario, "senha"=> $senhaUsuario, "nivelAcesso"=>$nivelDeAcesso];
+    $novoUsuario = ["id"=>"usuario$chave","nome"=>$nomeUsuario, "email"=>$emailUsuario, "senha"=> $senhaUsuario, "nivelAcesso"=>$nivelDeAcesso];
     
     $Usuarios["usuarios"][]=$novoUsuario;
     

@@ -23,7 +23,7 @@ $senha = $_POST['senhaUsuario'];
 
 foreach ($Usuarios['usuarios'] as $key => $usuario){
     if($usuario['email'] == $email){
-        $usuarioExiste = $Usuarios['usuarios'][$kye];
+        $usuarioExiste = $Usuarios['usuarios'][$key];
         break;
     }
 }
@@ -31,7 +31,8 @@ foreach ($Usuarios['usuarios'] as $key => $usuario){
 if(isset($usuarioExiste)){
     if(password_verify($senha, $usuarioExiste['senha'])){
         //poderia colocoar o password dentro do primeiro if, ficando if(isset($usuarioExiste)(password_verify($senha, $usuarioExiste['senha'])){
-    header("Location.index.php");
+        logarUsuario($usuarioExiste['nome'],$usuarioExiste['nivelAcesso']);
+        header("Location:index.php");
         }
     
 }else{

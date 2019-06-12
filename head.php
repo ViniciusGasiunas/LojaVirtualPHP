@@ -1,11 +1,6 @@
 <?php
 include "funcoes.php";
-$usuario = logarUsuario("Vinicius Gasiunas", 1);
-
-
-$usuario = logarUsuario("Vinicius Gasiunas", 1);
-
-$usuario = ["logado" => true, "nome"=> "Vinicius Gasiunas","nivelAcesso" => 0]; 
+$usuario = isset($_SESSION['usuario'])?$_SESSION['usuario']:"";
 //$usuario = "";
 
 $jsonProdutos = file_get_contents('Produtos.json');
